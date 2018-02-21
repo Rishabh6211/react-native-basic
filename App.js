@@ -11,12 +11,16 @@ import {
   Text,
   View, ProgressBar, TextInput
 } from 'react-native';
-//import ViewButton from './component/view';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk'
+import allReducer from './src/reducres/index'
+import ViewButton from './src/component/view';
 //import ScrollViewTab from './component/scrollview';
 //import LoginComponent from './component/login';
 //import FooterComponent from './component/footer';
 //import FlexDirectionBasics from './component/flex';
-import Route from './component/routing';
+import Route from './src/component/routing';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -28,33 +32,32 @@ const instructions = Platform.select({
 
 type Props = {};
 
+
+const store = createStore(allReducer, applyMiddleware(thunk));
+
 export default class App extends Component<Props> {
 
   constructor(props) {
     super(props);
-    this.state = { text: 'Useless Placeholder' };
+    
   }
-
+  /*configureStore(initialState) {
+      const enhancer = compose(
+          applyMiddleware(
+              thunkMiddleware
+          ),
+      );
+      return createStore(allReducer, initialState, enhancer);
+  }*/
   render() {
-
+     //const store= this.configureStore({});
     return (
-      <View style={styles.container} >
-
+       
+    <Provider store={store}>
+      <View style={styles.container}> 
         <Route />
-        {/*<Text style={styles.instructions}>
-        <ScrollViewTab />
-        <FlexDirectionBasics />
-          Its a button Component
-        </Text>
-        <FooterComponent />
-          <ViewButton />
-          <Text style={styles.instructions}>
-          Its a Scroll view Component
-        </Text>
-          <ScrollViewTab />*/}
-
-
-      </View>
+     </View>
+    </Provider>     
     );
   }
 }

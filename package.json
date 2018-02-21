@@ -10,7 +10,13 @@
     "eslint-plugin-react-native": "3.2.1",
     "react": "16.2.0",
     "react-native": "0.53.0",
-    "react-native-router-flux": "^4.0.0-beta.28"
+    "react-native-router-flux": "^4.0.0-beta.28",
+    "react-redux": "5.0.6",
+    "redux": "3.7.2",
+    "redux-form": "7.2.0",
+    "redux-logger": "^2.6.1",
+    "redux-promise": "^0.5.3",
+    "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
     "babel-eslint": "8.2.1",

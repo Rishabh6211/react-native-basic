@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
-import {View,Button,TextInput,StyleSheet,Image} from  'react-native';
+import {View,Button,TextInput,StyleSheet,Image,ScrollView,KeyboardAvoidingView} from  'react-native';
 import {Actions} from "react-native-router-flux";
-
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import bgSrc from '../../react.png';
 import { connect } from 'react-redux';
 import { login } from '../action/index'
@@ -27,7 +27,7 @@ import { login } from '../action/index'
   componentWillReceiveProps(Props){
     if(Props.activeuser.userdata){
       alert("login successfully")
-      Actions.listing()
+      Actions.tab_3()
     }
     else{
       alert("invalid user")
@@ -38,13 +38,19 @@ import { login } from '../action/index'
   render() {
     
     return (
-      <View style={styles.container} > 
+     
+    <KeyboardAwareScrollView style={styles.container}>
+    
+
+      <View  style={styles.container3}> 
       <View style={styles.picture} source={bgSrc}>
         <Image style={styles.pic} source={bgSrc}>
 
         </Image>
       </View>
+      
       <View style={styles.view}>
+      
         <TextInput placeholder="Please Enter UserName"  onChangeText = {this.handleUser}
           style={styles.input}
         />
@@ -52,7 +58,9 @@ import { login } from '../action/index'
         <TextInput placeholder="Please Enter Password"  onChangeText = {this.handlePassword} secureTextEntry={true}
           style={styles.input}
         />
+        <KeyboardAvoidingView behavior="position" style={{alignSelf: 'stretch'}} >
         <View style={styles.button}>
+        
           <Button
               
               title="Login" 
@@ -62,7 +70,9 @@ import { login } from '../action/index'
              }
               // onPress={() => Actions.listing()}
           />
+          
         </View>
+        </KeyboardAvoidingView>
         <View style={styles.view2}>
           <Button
           
@@ -70,8 +80,12 @@ import { login } from '../action/index'
               onPress={() => Actions.flex()}
           />
         </View>
+        
       </View>
       </View>
+      
+      
+    </KeyboardAwareScrollView>
     
        
 
@@ -107,6 +121,7 @@ const styles = StyleSheet.create({
     flex: 0.3,
 		width: null,
     height: null,
+    padding:30
    
   },
   pic:{
@@ -115,36 +130,47 @@ const styles = StyleSheet.create({
   //marginTop:70,
   alignItems: 'center',
   justifyContent: 'center',
+  
   },
   view:{
     flex: 0.5,
 		width: null,
     height: null,
+    padding:10
    
   },
   view2:{
     flex: 0.2,
     justifyContent: 'center',
-    //justifyContent:'space-between'
+    justifyContent:'space-between',
     paddingTop:120,
+    //width:200
   },
   
   container: {
     flex:1,
     flexDirection:'column',
+    //alignItems: 'center',
+    //justifyContent: 'center',
+    backgroundColor: '#005994',
+    //justifyContent:'space-between'
+  },
+  container3: {
+    
+    flexDirection:'column',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#006994',
+    backgroundColor: '#005994',
     //justifyContent:'space-between'
   },
 
   input: {
-		backgroundColor: 'rgba(255, 255, 255, 0.4)',
-    width:250,
+		//backgroundColor: 'rgba(255, 255, 255, 0.4)',
+    width:200,
     height: 40,
 		marginHorizontal: 20,
-		paddingLeft: 45,
-    borderRadius: 20,
+		//paddingLeft: 45,
+    //borderRadius: 20,
     marginBottom :10,
 		color: '#ffffff',
 	},
@@ -154,7 +180,8 @@ const styles = StyleSheet.create({
   button: {
 		alignItems: 'center',
 		justifyContent: 'center',
-		backgroundColor: '#006994',
+    //backgroundColor: '#006994',
+    //width:250,
 		height: 40,
 		borderRadius: 20,
 		zIndex: 100,

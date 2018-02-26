@@ -1,13 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import {
-	StyleSheet,
-	TouchableOpacity,
-	Text,
-	Image,
-	ListView,
-    View,
-    FlatList
-} from 'react-native';
+import { Container, Header, Content, List, ListItem, Text } from 'native-base';
+import {StyleSheet,View,KeyboardAvoidingView,FlatList,TouchableHighlight} from 'react-native';
 import {Actions} from "react-native-router-flux";
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
@@ -32,22 +25,20 @@ const DEVICE_HEIGHT = Dimensions.get('window').height;
     }
 
   render() {
+    var items = this.props.users
     return (
-      <View style={styles.container}>      
-      <FlatList
-        scrollEnabled={false}
-        style={{ flex: 1 }}
-        data={this.props.users}
-        keyExtractor={item => item.id}
-        renderItem={({item, index}) => {
-            console.log('in the list ',item)
-            return (
-                <Text style={styles.text} onPress={() => Actions.detail(item.id)}>Hello {item.first}</Text>
-            )
-        }}
-      />
-      </View>
-
+      <Container>
+        <Header />
+        <Content>
+          <List dataArray={items}
+            renderRow={(item) =>
+                <TouchableHighlight ><ListItem > 
+                 <Text onPress={() => Actions.detail(item.id)} key={item.id}>{item.first}</Text>
+              </ListItem></TouchableHighlight>
+            }>
+          </List>
+        </Content>
+      </Container>
     );
   }
 }
@@ -78,7 +69,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#217ADC',
         marginBottom:5,
          
-	},
+    },
+    
 });
 const mapStateToProps = (state) => {
     return {users: state.users.usersList ? state.users.usersList : null }

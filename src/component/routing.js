@@ -21,8 +21,7 @@ const Route = () => {
 		<Scene key='route' hideNavBar>
 			
         <Stack
-          back
-          backTitle="Back"
+          
           key="register"
           
         >
@@ -30,7 +29,7 @@ const Route = () => {
            	<Scene key="flex" component={SignupComponent} title="Signup" />
            	<Scene key="login" component={LoginComponent} title="Login" initial />
         </Stack>
-       	<Stack key="tab_3" back  backTitle="Back" >
+       	<Stack key="tab_3"  backTitle="Back" >
 			   <Scene key="listing" component={ListComponent} title="listing" />
 			   <Scene key="detail" component={DetailComponent} title="detail" />	        
 		</Stack>

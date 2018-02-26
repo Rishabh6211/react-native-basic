@@ -1,12 +1,13 @@
+'use strict';
 import React, { Component, PropTypes } from 'react';
 import {
 	StyleSheet,
 	TouchableOpacity,
-	Text,
 	Image,
 	ListView,
-	View,
+    View
 } from 'react-native';
+import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body } from 'native-base';
 import {Actions} from "react-native-router-flux";
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
@@ -35,14 +36,31 @@ const DEVICE_HEIGHT = Dimensions.get('window').height;
     //alert(JSON.stringify(this.props.userDetail))
     const userdetail = this.props.userDetail;
     return (
-      <View style={styles.container}> 
-        <View style={styles.text}>     
-            <Text style={styles.bigblue}>Name: {userdetail.first} {userdetail.last}</Text>
-            <Text style={styles.bigblue}>Age : {userdetail.age}</Text>
-            <Text style={styles.bigblue}>About: {userdetail.description}</Text>
-        </View>
       
-      </View>
+        <Container>
+        <Header />
+        <Content>
+          <Card style={{flex: 1}}>
+        
+            <CardItem>
+              <Body>
+               
+                <Text>
+                    Name: {userdetail.first} {userdetail.last}
+                </Text>
+                <Text>
+                    age: {userdetail.age} 
+                </Text>
+                <Text>
+                    description: {userdetail.description} 
+                </Text>
+              </Body>
+            </CardItem>
+            
+          </Card>
+        </Content>
+      </Container>
+      
 
     );
   }

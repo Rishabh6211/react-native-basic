@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import Dimensions from 'Dimensions';
 import {Get_data,user_data} from '../action/index';
 
+
 const MARGIN = 40;
 
 var width = Dimensions.get('window').width; //full width

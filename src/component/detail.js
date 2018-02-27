@@ -111,26 +111,21 @@ const DEVICE_HEIGHT = Dimensions.get('window').height;
        onPress={()=>this.setState({ openCamera : true })}
        activeOpacity={0.7}
      />
-     <Text>
-                    Name: {userdetail.first} {userdetail.last}
-                </Text>
-                <Text>
-                    age: {userdetail.age} 
-                </Text>
-                <Text>
-                    description: {userdetail.description} 
-                </Text>
-        </View>
-       
-        
-         
-         
+        <Text>
+            Name: {userdetail.first} {userdetail.last}
+        </Text>
+        <Text>
+            age: {userdetail.age} 
+        </Text>
+        <Text>
+            description: {userdetail.description} 
+        </Text>
+    </View>
+    </Card>
 
- </Card>
-
-       </ScrollView>
+    </ScrollView>
       }
-      </View>
+    </View>
       
       
 

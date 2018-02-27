@@ -2,8 +2,9 @@ import React,{Component} from 'react';
 import {View,Text,StyleSheet,Button} from  'react-native'
 import {Actions} from "react-native-router-flux";
 import {connect} from "react-redux";
-import Search from 'react-native-search-box';
+import { FormLabel, FormInput,FormValidationMessage } from 'react-native-elements'
 import {Get_data} from '../action/index';
+import ListComponent from '../component/listing'
 const rowHeight = 40;
  class FilterComponent extends Component {
 
@@ -16,55 +17,24 @@ const rowHeight = 40;
         
     }
 
-    renderRow = (item, sectionId, index) => {
-        return (
-          <TouchableHightLight
-            style={{
-              height: rowHeight,
-              justifyContent: 'center',
-              alignItems: 'center'}}
-          >
-            <Text>{item.name}</Text>
-          </TouchableHightLight>
-        );
-      }
+    state = {
+        search: ''
+     }
+    handleUser = (text) => {
+        this.props.searchData(text)
+    }   
   
-      // Important: You must return a Promise
-      beforeFocus = () => {
-          return new Promise((resolve, reject) => {
-              alert('beforeFocus');
-              resolve();
-          });
-      }
-  
-      // Important: You must return a Promise
-      onFocus = (text) => {
-          return new Promise((resolve, reject) => {
-              alert('onFocus');
-              resolve();
-          });
-      }
-  
-      // Important: You must return a Promise
-      afterFocus = () => {
-          return new Promise((resolve, reject) => {
-              alert('afterFocus');
-              resolve();
-          });
-      }
+     
+     
 
   render() {
+    var items = this.state.users
     return (
         <View >
-        <Search
-          ref="search_box"
-          /**
-          * There many props that can customizable
-          * Please scroll down to Props section
-          */
+        <FormInput 
+        placeholder="Please Search here" 
+        onChangeText={this.handleUser}
         />
-        
-        
       </View>
     );
   }

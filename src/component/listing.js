@@ -6,7 +6,7 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import Dimensions from 'Dimensions';
 import {Get_data,user_data} from '../action/index';
-
+import FilterComponent from '../container/filter'
 const MARGIN = 40;
 
 var width = Dimensions.get('window').width; //full width
@@ -27,9 +27,15 @@ const DEVICE_HEIGHT = Dimensions.get('window').height;
   render() {
     var items = this.props.users
     return (
+      
+     
+    
       <Container>
-        <Header />
+      
+      <FilterComponent />
+        
         <Content>
+        
           <List dataArray={items}
             renderRow={(item) =>
                 <TouchableHighlight ><ListItem > 
@@ -38,6 +44,7 @@ const DEVICE_HEIGHT = Dimensions.get('window').height;
             }>
           </List>
         </Content>
+        
       </Container>
     );
   }
@@ -45,7 +52,7 @@ const DEVICE_HEIGHT = Dimensions.get('window').height;
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-        backgroundColor:"#d3d3d3",
+        //backgroundColor:"#d3d3d3",
         //alignItems: 'center',
         //marginTop:55,
 		//justifyContent: 'center',
